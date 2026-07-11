@@ -1,0 +1,16 @@
+{
+  "tenant_id": "synthetic-lab",
+  "project": "saas-efficiency-moral-roi",
+  "source": "synthetic-fixture",
+  "observed_at": "2026-07-11T08:00:00Z",
+  "ingested_at": "2026-07-11T08:00:05Z",
+  "metric": "value_per_compute_unit",
+  "value": 0.42,
+  "unit": "ratio",
+  "evidence_ref": "sha256:synthetic-11",
+  "schema_version": "0.1.0",
+  "attributes": {
+    "synthetic": true,
+    "review_required": true
+  }
+}

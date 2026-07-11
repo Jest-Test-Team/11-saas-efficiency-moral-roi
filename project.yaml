@@ -1,0 +1,25 @@
+id: "11"
+slug: saas-efficiency-moral-roi
+name: "SaaS Efficiency, Moral ROI"
+zh_name: "SaaS 功能效率、ROI 與道德影響監測"
+status: concept
+maturity: blueprint
+core_question: "每個 SaaS feature 帶來多少業務價值、資源成本、維運負擔與道德外部性？"
+building_concept: "Operational Energy + POE + Ethical Brief（營運能耗、使用後評估與倫理簡報）"
+entities:
+  - Feature
+  - Usage
+  - Cost
+  - BusinessOutcome
+  - Externality
+  - Decision
+metrics:
+  - value_per_compute_unit
+  - feature_roi
+  - support_burden
+  - security_cost
+  - moral_externality_index
+governance:
+  consequential_decision: human-review-required
+  production_data: prohibited-in-blueprint
+  evidence_provenance: required

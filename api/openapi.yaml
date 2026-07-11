@@ -1,0 +1,59 @@
+openapi: 3.1.0
+info:
+  title: SaaS Efficiency, Moral ROI Blueprint API
+  version: 0.1.0
+  description: Synthetic-data, human-review-oriented starter contract.
+servers:
+  - url: http://localhost:8081
+paths:
+  /v1/saas-efficiency-moral-roi/events:
+    post:
+      summary: Ingest one evidence event
+      operationId: ingestSaaSEfficiencyMoralROIEvent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        '202':
+          description: Accepted for validation and analysis
+  /v1/saas-efficiency-moral-roi/assessments:
+    get:
+      summary: List explainable assessments
+      responses:
+        '200':
+          description: Assessment list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assessment'
+components:
+  schemas:
+    Event:
+      type: object
+      required: [tenant_id, source, observed_at, metric, value, schema_version]
+      properties:
+        tenant_id: { type: string }
+        source: { type: string }
+        observed_at: { type: string, format: date-time }
+        metric: { type: string, example: value_per_compute_unit }
+        value: { type: number }
+        unit: { type: string }
+        schema_version: { type: string, example: '0.1.0' }
+        evidence_ref: { type: string }
+    Assessment:
+      type: object
+      required: [assessment_id, status, evidence_refs, human_review_required]
+      properties:
+        assessment_id: { type: string }
+        status: { type: string, enum: [draft, review-required, accepted, rejected] }
+        summary: { type: string }
+        uncertainty: { type: number, minimum: 0, maximum: 1 }
+        evidence_refs:
+          type: array
+          items: { type: string }
+        human_review_required: { type: boolean, const: true }
